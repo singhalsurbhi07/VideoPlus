@@ -2,8 +2,12 @@ package com.example.videoplus;
 
 
 
+import org.json.JSONException;
+
+import com.example.videoplus.db.MySQLiteHelperVideos;
 import com.example.videoplus.services.ResponseFileService;
 import com.example.videoplus.utils.ExternalStorageUtil;
+import com.example.videoplus.utils.StaticDataReference;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -22,12 +26,20 @@ public class UserQuery extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_query);
+		MySQLiteHelperVideos sqLiteHelperVideos = new MySQLiteHelperVideos(this);
+		StaticDataReference.setSqlHelper(sqLiteHelperVideos);
+		try {
+			sqLiteHelperVideos.addVideoRow();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.user_query, menu);
+		getMenuInflater().inflate(R.menu.action_data_sync, menu);
 		return true;
 	}
 
@@ -55,5 +67,10 @@ public class UserQuery extends Activity {
 		startActivityForResult(Intent.createChooser(sendin, "share file via"),0);
 		Intent i = new Intent(this,ResponseFileService.class);
 		startService(i);
+	}
+	
+	public void onWiFiConnect(MenuItem mi){
+		Intent i = new Intent(this,com.example.videoplus.wifidirect.WiFiDirectActivity.class);
+		startActivity(i);
 	}
 }

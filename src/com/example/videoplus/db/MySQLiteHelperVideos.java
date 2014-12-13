@@ -99,6 +99,7 @@ public class MySQLiteHelperVideos  extends SQLiteOpenHelper {
 		for (int i = 0; i < 5; i++) {
 			Log.d("MySqliteHelper","storing data to db for "+i);
 			int j = random.nextInt(9);
+			Log.d("storing data at index",String.valueOf(j));
 			values.put(COLUMN_ID, videoId[j]);
 			values.put(COLUMN_TITLE, title[j]); 
 			values.put(COLUMN_TYPE, "like");
