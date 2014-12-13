@@ -15,6 +15,7 @@ import java.net.URLConnection;
 import org.json.JSONException;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.Menu;
@@ -69,6 +70,8 @@ public class MainActivity extends Activity implements OAuthCallback {
 	@Override
 	public void onFinished(OAuthData data) {
 		StaticDataReference.setData(data);
+		Intent i = new Intent(this,UserQuery.class);
+		startActivity(i);
 		StrictMode.ThreadPolicy policy = new
 				StrictMode.ThreadPolicy.Builder()
 				.permitAll().build();
