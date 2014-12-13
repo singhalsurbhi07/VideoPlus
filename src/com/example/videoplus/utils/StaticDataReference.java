@@ -1,5 +1,7 @@
 package com.example.videoplus.utils;
 
+import android.util.Log;
+
 import com.example.videoplus.db.MySQLiteHelperVideos;
 
 import io.oauth.OAuthData;
@@ -12,7 +14,8 @@ public class StaticDataReference {
 	}
 
 	public static void setSqlHelper(MySQLiteHelperVideos sqlHelper) {
-		sqlHelper = sqlHelper;
+		StaticDataReference.sqlHelper = sqlHelper;
+		Log.d("StaticReference","setting sqlHELPER");
 	}
 
 	

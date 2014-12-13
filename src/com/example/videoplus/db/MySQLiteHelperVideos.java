@@ -21,7 +21,7 @@ public class MySQLiteHelperVideos  extends SQLiteOpenHelper {
 
 	private static final int DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "VideoDB.db";
-	public static String COLUMN_ID = "VIDEO_ID";
+	public static String COLUMN_ID = "VideoId";
 
 	public static final String TBL_VIDEO = "VIDEO";
 	public static final String COLUMN_TYPE = "TYPE";
@@ -90,7 +90,7 @@ public class MySQLiteHelperVideos  extends SQLiteOpenHelper {
 		"SJSU Campus Tour"};
 
 		//Open database connection
-		SQLiteDatabase db = this.getWritableDatabase();
+		db = this.getWritableDatabase();
 		// Define values for each field
 		ContentValues values = new ContentValues();
 		//values.put(COLUMN_ID, DateUtil.getYesterdayDateString()); 
@@ -114,6 +114,7 @@ public class MySQLiteHelperVideos  extends SQLiteOpenHelper {
 	}
 	
 	public String getKAddressList(String queryStr) {
+		Log.d("MySqliteHelper","entered in query execute func");
 
 		db = this.getReadableDatabase();
 		Map<String, Integer> addressMap = new HashMap<String, Integer>();

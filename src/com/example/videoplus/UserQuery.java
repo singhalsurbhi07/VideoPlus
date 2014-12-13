@@ -56,7 +56,7 @@ public class UserQuery extends Activity {
 	}
 	
 	public void getTopLike(View v){
-		String query = "select videoId, url, title from VIDEO;" ;
+		String query = "select videoId, url, title from VIDEO" ;
 		util.writeRequestToDownloads(query);
 		String uri = "file://"+Environment.getExternalStoragePublicDirectory(
 				Environment.DIRECTORY_DOWNLOADS).getAbsolutePath()+"/videoplus/videoRequest.json";
